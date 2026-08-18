@@ -1,0 +1,24 @@
+included:
+  - Sources
+  - Tests
+
+disabled_rules:
+  - cyclomatic_complexity
+  - file_length
+  - function_body_length
+  - implicit_optional_initialization
+  - opening_brace
+  - static_over_final_class
+  - trailing_comma
+  - type_body_length
+
+line_length:
+  warning: 120
+  error: 120
+  ignores_comments: true
+  ignores_urls: true
+  excluded_lines_patterns:
+    - '^\s*#".*"#'
+
+identifier_name:
+  min_length: 2

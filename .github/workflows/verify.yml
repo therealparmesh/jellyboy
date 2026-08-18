@@ -1,0 +1,22 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apple-platforms:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install tools
+        run: |
+          brew install xcodegen swiftlint
+          npm install --global oxfmt@0.57.0
+      - name: Verify
+        run: script/verify.sh
